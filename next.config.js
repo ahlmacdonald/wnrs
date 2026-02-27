@@ -1,6 +1,8 @@
-const withPWA = require('next-pwa')
-
-module.exports = withPWA({
-  reactStrictMode: true,
-  // pwa: { disable: true }
-})
+module.exports = {
+  output: 'export',
+  basePath: '/wnrs',
+  assetPrefix: '/wnrs/',
+  images: {
+    unoptimized: true
+  }
+}
