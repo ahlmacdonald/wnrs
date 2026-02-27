@@ -6,13 +6,13 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -20,8 +20,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Export static site
+      - name: Build and Export Next.js app
         run: npm run export
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
